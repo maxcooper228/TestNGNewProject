@@ -16,29 +16,7 @@ public class MainTest {
     public void setUp() {
         main = new Main();
     }
-//    @Test
-//    public void testF1(){
-//        double expected = -3.858407;
-//        double x = 1;
-//        double actual = main.f(x);
-//        assertEquals(actual, expected, EPS);
-//    }
-//
-//    @Test
-//    public void testF2(){
-//        double expected = 11.606278;
-//        double x = 1.3;
-//        double actual = main.f(x);
-//        assertEquals(actual, expected, EPS);
-//    }
-//
-//    @Test
-//    public void testF3(){
-//        double expected = 2.732644;
-//        double x = 2;
-//        double actual = main.f(x);
-//        assertEquals(actual, expected, EPS);
-//    }
+
     @DataProvider(name = "dataForTest")
     public Object[][] createDataForTestF() {
         return new Object[][]{

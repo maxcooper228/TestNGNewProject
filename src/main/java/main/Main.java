@@ -12,33 +12,47 @@ import static java.lang.Math.*;
 public class Main {
     private final double a = 1.65;
     private double EPS = 1e-6;
-
+    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     public static void main(String[] args) {
         Main main = new Main();
         main.run();
     }
      private void run() {
         try {
-            double[] arr = input();
-            displayMinAndPosition(arr);
-            displayMaxAndPosition(arr);
+           double start = inputStart();
+           double end = inputEnd();
+           double step = inputStep();
+           double[] arrayOfX = fillX(start, end, step);
+           double[] arrayOfY = fillY(arrayOfX);
+           displayMaxAndPosition(arrayOfY);
+           displayMinAndPosition(arrayOfY);
+           System.out.println("Sum of values of function is " + sum(arrayOfY) );
+           System.out.println("Average value of function is " + avg(arrayOfY));
+
+
         }catch (IOException e){
             e.printStackTrace();
         }
 
     }
 
-    public double[] input() throws IOException {
+    public double inputStart() throws IOException {
+        System.out.println("Enter double number for start value of x: ");
+        double start = Double.parseDouble(bufferedReader.readLine());
 
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String numbers = bufferedReader.readLine();
-        String[] stringArray = numbers.split(" ");
-        double arr[] = new double[stringArray.length];
-        for (int i = 0; i < stringArray.length; i++){
-            arr[i] = Double.parseDouble(stringArray[i]);
-        }
-        return arr;
+       return start;
     }
+    public double inputEnd() throws IOException{
+        System.out.println("Enter double number for end value of x: ");
+        double end = Double.parseDouble(bufferedReader.readLine());
+        return end;
+    }
+    public double inputStep() throws IOException{
+        System.out.println("Enter double number for step value: ");
+        double step = Double.parseDouble(bufferedReader.readLine());
+        return step;
+    }
+
 
     public double f(double x) {
         if (x < 1.3-EPS) return PI*x*x - (7/(x*x));
@@ -105,7 +119,7 @@ public class Main {
             }
         }
 
-        System.out.println("Max = " + max + " position = " + index);
+        System.out.println("Max value = " + max + " position = " + index);
     }
     public void displayMinAndPosition(double[] arr){
         double min = findMin(arr);
@@ -117,6 +131,6 @@ public class Main {
             }
         }
 
-        System.out.println("Min = " + min + " position = " + index);
+        System.out.println("Min value = " + min + " position = " + index);
     }
 }
